@@ -3,7 +3,7 @@
 #include <windows.h>
 #include <ctime>
 #include "Header.h"
-//hereJD
+
 using namespace std;
 
 int main()
@@ -36,6 +36,48 @@ int main()
 				system("CLS");
 				cout << "Pomyslnie zalogowano, przejscie do serwisu..." << i;
 				Sleep(1000);
+			}
+			system("CLS");
+			for (;;)
+			{
+				
+				cout << "(1)----Wynajmnij----(1)\n(2)----Zarzadzanie rezerwacjami/pokojami----(2)\n(0)----Wyloguj----(0)\n";
+				cin >> wybor;
+				switch (wybor)
+				{
+				case 1:
+				{
+					int dzien, miesiac, rok;
+					system("CLS");
+					
+					do {
+						cout << "----Podaj date----\nDzien (1-31);";
+						cin >> dzien;
+						cout << "Miesiac (1-12): ";
+						cin >> miesiac;
+						cout << "Rok (2020-2024): ";
+						if (dzien > 31 || dzien < 1 || miesiac>12 || miesiac < 1 || rok < 2020 || rok>2024)
+						{
+							cout << "Blad w wczytaniu daty...\nSprobuj jeszcze raz";
+						}
+						Sleep(1000);
+					} while (dzien > 31 || dzien < 1 || miesiac>12 || miesiac < 1 || rok < 2020 || rok>2024);
+					//pomysl na czas??
+					break;
+				}
+				case 2:
+				{
+					break;
+				}
+				case 0:
+				{
+					break;
+				}
+				default:
+				{
+					break;
+				}
+				}
 			}
 			//tutaj odpala sie menu po zalogowaniu czyli wynajem, zarzadzanie rezerwacja itd
 			break;

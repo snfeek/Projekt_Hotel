@@ -8,7 +8,7 @@ public:
 	string adres;
 	string www;
 	string nr_tel; //do usuniecia
-	int liczba_pokoi;
+	int liczba_pokoi[100]; 
 	int liczba_gosci;
 	int liczba_pracownikow;
 };
@@ -21,7 +21,7 @@ class Pokoj {
 public: 
 	const int numer_pokoju;
 	const int pietro;
-
+	int rodzaj_pokoj; //1-jednosobowy, 2-dwuuosobowy,4-czterosobowy
 	bool czy_zarezerowany();
 };
 class user {
@@ -44,3 +44,4 @@ void user::rejestracja()
 	cin >> haslo;
 
 }
+
