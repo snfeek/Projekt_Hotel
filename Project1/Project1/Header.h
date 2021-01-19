@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <iostream>
 using namespace std;
 
 #pragma once
@@ -211,6 +212,60 @@ void Pokoj::rachunek()
 
 	//ilosc_dni = dzien_konca_n - dzien_poczatku_n; //jeszcze musze zrobic ify o to ze jak przechodzi z miesiaca na miesiac to ilosc dni + 30/31 zaleznie od miesiaca UPDATE jest na górze xD
 
+	rachunek_do_zaplacenia = ilosc_dni * cena_za_noc;
+	cout << "Rachunek wynosi: " << rachunek_do_zaplacenia << "zl. " << endl;
+}
+
+void Pokoj::rachunek()
+{
+	int rachunek_do_zaplacenia;
+	int ilosc_dni;
+
+	
+	
+
+		switch (miesiac_konca_n - miesiac_poczatku_n)
+		{
+		case 0:
+			ilosc_dni = dzien_konca_n - dzien_poczatku_n;
+			break;
+		case 1:
+			ilosc_dni = 30 - dzien_poczatku_n + dzien_konca_n; // na zmiane dodaje 30/31 zeby bylo jakby miesiac sie zmienial a dni sie zgadzaly
+			break;
+		case 2:
+			ilosc_dni = 61 - dzien_poczatku_n + dzien_konca_n;
+			break;
+		case 3:
+			ilosc_dni = 91 - dzien_poczatku_n + dzien_konca_n;
+			break;
+		case 4:
+			ilosc_dni = 122 - dzien_poczatku_n + dzien_konca_n;
+			break;
+		case 5:
+			ilosc_dni = 152 - dzien_poczatku_n + dzien_konca_n;
+			break;
+		case 6:
+			ilosc_dni = 183 - dzien_poczatku_n + dzien_konca_n;
+			break;
+		case 7:
+			ilosc_dni = 213 - dzien_poczatku_n + dzien_konca_n;
+			break;
+		case 8:
+			ilosc_dni = 244 - dzien_poczatku_n + dzien_konca_n;
+			break;
+		case 9:
+			ilosc_dni = 247 - dzien_poczatku_n + dzien_konca_n;
+			break;
+		case 10:
+			ilosc_dni = 278 - dzien_poczatku_n + dzien_konca_n;
+			break;
+		case 11:
+			ilosc_dni = 308 - dzien_poczatku_n + dzien_konca_n; // jak ja to wykombinowalem to do teraz nie wiem xDDD
+			break;
+		}
+	
+	//ilosc_dni = dzien_konca_n - dzien_poczatku_n; //jeszcze musze zrobic ify o to ze jak przechodzi z miesiaca na miesiac to ilosc dni + 30/31 zaleznie od miesiaca UPDATE jest na górze xD
+	
 	rachunek_do_zaplacenia = ilosc_dni * cena_za_noc;
 	cout << "Rachunek wynosi: " << rachunek_do_zaplacenia << "zl. " << endl;
 }
