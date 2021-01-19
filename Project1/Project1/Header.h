@@ -26,7 +26,7 @@ public:
 	int cena_za_noc;
 	int dzien_konca_r, miesiac_konca_r, rok_konca_r, dzien_poczatku_r, miesiac_poczatku_r, rok_poczatku_r; // dzien konca n -dzien konca nowej rezerwacji itd
 	int dzien_konca_n, miesiac_konca_n, rok_konca_n, dzien_poczatku_n, miesiac_poczatku_n, rok_poczatku_n; // dzien poczatku r - dzien poczatku starej rezerwacji
-	bool czy_zarezerowany;
+	bool czy_zarezerowany = false;
 	void rezerwowanie();
 	void rezerwacja();
 	void rachunek();
@@ -161,8 +161,8 @@ void Pokoj::rachunek()
 {
 	int rachunek_do_zaplacenia;
 	int ilosc_dni;
-	if (dzien_poczatku_n >= dzien_konca_n)
-	{
+
+	
 	
 
 		switch (miesiac_konca_n - miesiac_poczatku_n)
@@ -204,7 +204,7 @@ void Pokoj::rachunek()
 			ilosc_dni = 308 - dzien_poczatku_n + dzien_konca_n; // jak ja to wykombinowalem to do teraz nie wiem xDDD
 			break;
 		}
-	}
+	
 	//ilosc_dni = dzien_konca_n - dzien_poczatku_n; //jeszcze musze zrobic ify o to ze jak przechodzi z miesiaca na miesiac to ilosc dni + 30/31 zaleznie od miesiaca UPDATE jest na górze xD
 	
 	rachunek_do_zaplacenia = ilosc_dni * cena_za_noc;
