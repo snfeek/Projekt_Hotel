@@ -1,144 +1,210 @@
 #include <iostream>
 #include <string>
-#include <windows.h>
-#include <ctime>
 #include <fstream>
-#include "Header.h"
+//#include "header.h"
+
+
 
 using namespace std;
-/*  TO DO
-rezerwacja pokoju{
--sprawdzenie dostepnosci
--jak dlugo
--jaki pokoj(2, 3,4 osobowy)
 
-}
-zarzadzanie rezerwacja{
-oplata rezerwacji
-wydanie pokoju
-zamowienie posilku/sprzataczki
-}
+class User {
+public:
+	string login;
+	string haslo;
 
--
+public:
+	User() {}
 
-*/
+	User(string login1, string haslo1) {
+		login = login1;
+		haslo = haslo1;
+	}
+};
 
-int main()
+bool rejestracja()
 {
-	user;
-	fstream plik;
-	plik.open("uzytkownicy.txt", std::ios::in | std::ios::out);
-	if (plik.good() == true)
+	cout << "Podaj login: ";
+
+	string login;
+	cin >> login;
+	cout << "\nPodaj haslo: ";
+	string haslo;
+	cin >> haslo;
+
+	bool moznaZarejestrowac = 1;
+	string line;
+	ifstream plik("Text.txt");			//otwarcie pliku
+	if (plik.is_open()) {			//otwieram do odczytu
+		while (getline(plik, line)) {		//petla pobierania linie z pliku plik=skad, line=dokad
+			size_t spacja = line.find(' ');			//szukanie spacji
+			string tempLogin = line.substr(0, spacja);	//zapisywanie
+
+			if (login.compare(tempLogin) == 0) {			//porownanie loginu, jest taki login
+				//cout << "Jestes zalogowany" << endl;
+				moznaZarejestrowac = false;
+			}
+			plik.close();
+		}
+
+		if (moznaZarejestrowac == true) { //gdy nie znaleziono takiego loginu
+			ofstream plik("Text.txt", ios_base::app);
+			if (plik.is_open()) {
+				plik << login << " " << haslo << endl;
+				plik.close();
+			}
+		}
+
+		else
+			cout << "Jest juz taki ziomek! Login zajenty" << endl;
+		return 0;
+	}
+
+	return 1;
+}
+void menu_admin()				//po zalogowaniu
+{
+
+
+}
+
+bool logowanie()
+{
+	string login, haslo;
+	cout << "Podaj login: ";
+	cin >> login;
+	cout << "\nPodaj haslo: ";
+	cin >> haslo;
+
+	if (login.compare("admin") == 0 && haslo.compare("admin") == 0)
 	{
-		cout << "Uzyskano dostep do pliku" << endl;
-		//operacje na pliku
+		menu_admin();
+	}
+	bool zalogowano = 0;
+
+	string line;
+	ifstream plik("Text.txt");			//otwarcie pliku
+	if (plik.is_open()) {
+		while (getline(plik, line)) {		//petla pobierania linie z pliku plik=skad, line=dokad
+			size_t spacja = line.find(' ');			//szukanie spacji
+			string tempLogin = line.substr(0, spacja);	//dzielenie na login i haslo
+			string tempHaslo = line.substr(spacja + 1);
+
+
+			if (login.compare(tempLogin) == 0 && haslo.compare(tempHaslo) == 0) {			//porownanie loginu i hasla uzytkownika z tymi z pliku
+				//cout << "Jestes zalogowany" << endl;
+				zalogowano = true;
+			}
+			//cout << tempLogin << " " << tempHaslo << " " << tempHaslo.size() <<  endl;
+		}
+
+		if (zalogowano == true) {
+
+		}
+		else {
+			cout << "Kurwa nie jestes zalogowany ziom " << endl;
+			return 0;
+		}
+
+		system("pause");
 		plik.close();
 	}
-	else
-		cout << "Dostep do pliku zabroniony" << endl;
-
-
-	/*user uzytkownik;
-	//MENU
-	int i = 0;
+	return 1;
+}
+void menu_user()
+{
 	for (;;)
 	{
-		i++;
 		int wybor;
-		cout << "1. Login\n2. Rejestracja\n0.Zamknij\n\nWybor:  ";
+		cout << "(1) Zarezerwuj pokoj" << endl;
+		cout << "(2) Zarzadzanie wynajetym pokojem" << endl;
+		cout << "(3) Wyjdz" << endl;
+
 		cin >> wybor;
 		cin.clear();
 		cin.ignore();
-		switch (wybor)//w zaleznosci od wyboru mamy rozne opcje
+		system("cls"); //czyszczenie ekranu
+
+		switch (wybor)
 		{
-		case 1:			//logowanie(najpierw trzeba sie zarejestrowac ale sprobuje zrobic zeby zapisywac 
-							//loginy i hasla w pliku.txt zeby nietrzebabylo rejestrowac sie za kazdym razem)
+		case 1:
 		{
-			string login, haslo;
-			do {
-				cout << uzytkownik.login;
-				cout << uzytkownik.haslo;
-				cout << "----Logowanie----\nLogin: ";
-				cin >> login;
-				cout << "Haslo: ";
-				cin >> haslo;
-			} while (login != uzytkownik.login||haslo != uzytkownik.haslo);
-			for (int i = 3; i > 0; i--) {
-				system("CLS");
-				cout << "Pomyslnie zalogowano, przejscie do serwisu..." << i;
-				Sleep(1000);
-			}
-			system("CLS");
-			for (;;)//przejscie do menu po poprawnym zalogowaniu
-			{
-				
-				cout << "(1)----Wynajmnij----(1)\n(2)----Zarzadzanie rezerwacjami/pokojami----(2)\n(0)----Wyloguj----(0)\n";
-				cin >> wybor;
-				switch (wybor)
-				{
-				case 1:
-				{
-					int dzien, miesiac, rok;
-					system("CLS");
-					
-					do {
-						cout << "----Podaj date----\nDzien (1-31);";
-						cin >> dzien;
-						cout << "Miesiac (1-12): ";
-						cin >> miesiac;
-						cout << "Rok (2020-2024): ";
-						cin >> rok;
-						if (dzien > 31 || dzien < 1 || miesiac>12 || miesiac < 1 || rok < 2020 || rok>2024)
-						{
-							cout << "Blad w wczytaniu daty...\nSprobuj jeszcze raz";
-						}
-						Sleep(1000);
-					} while (dzien > 31 || dzien < 1 || miesiac>12 || miesiac < 1 || rok < 2020 || rok>2024);
-					//pomysl na czas??
-					break;
-				}
-				case 2:
-				{
-					break;
-				}
-				case 0:
-				{
-					break;
-				}
-				default:
-				{
-					break;
-				}
-				}
-			}
-			
+			//zarezerwuj_pokoj();
 			break;
 		}
-		case 2://rejestracja
+		case 2:
 		{
-			
-			uzytkownik.rejestracja();		//w Header.h
-			system("CLS");
+			//zarzadzanie_pokojem();
 			break;
 		}
-		case 0://wyjscie z programu
+		case 3:
 		{
-		
+
 			break;
 		}
 		default:
 		{
-			cout << "Break";
 			break;
 		}
 		}
-		if (wybor == 0)
-		{
-			break;
-		}
-		
 	}
-	*/
+}
+void zarezerwuj_pokoj()
+{
+
+}
+void zarzadzanie_pokojem()
+{
+
+}
+
+void menu() {
+	int wybor;
+	cout << "Witaj w menu!" << endl;
+	cout << "Co chcesz zrobic?" << endl;
+	cout << "(1) Zaloguj sie" << endl;
+	cout << "(2) Zarejestruj sie" << endl;
+	cout << "(3) Wyjdz" << endl;
+
+	cin >> wybor;
+	cin.clear();
+	cin.ignore();
+	system("cls"); //czyszczenie ekranu
+
+	switch (wybor)
+	{
+	case 1:
+	{
+		bool stan = 0;
+		while (stan == 0) {
+			system("cls");
+			stan = logowanie();
+		}
+		break;
+	}
+	case 2:
+	{
+		rejestracja();
+		break;
+	}
+	case 3:
+	{
+
+		break;
+	}
+	default:
+	{
+		break;
+	}
+	}
+}
+
+int main()
+{
+
+	menu();
+
+	//rejestracja();
+
 	system("pause");
 	return 0;
 }
