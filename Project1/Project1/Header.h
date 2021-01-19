@@ -10,7 +10,7 @@ public:
 	string nr_tel; //do usuniecia
 	int liczba_pokoi[100]; 
 	int liczba_gosci;
-	int liczba_pracownikow;
+	int liczba_pracownikow; // liczba pracowników
 };
 
 class Recepcja {
