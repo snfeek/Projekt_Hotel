@@ -1,16 +1,16 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-//#include "header.h"
-
-
-
+#include "Header.h"
 using namespace std;
+
+
 
 class User {
 public:
 	string login;
 	string haslo;
+	
 
 public:
 	User() {}
@@ -61,6 +61,7 @@ bool rejestracja()
 
 	return 1;
 }
+
 void menu_admin()				//po zalogowaniu
 {
 
@@ -105,18 +106,29 @@ bool logowanie()
 			return 0;
 		}
 
-		system("pause");
+		
 		plik.close();
 	}
 	return 1;
+}
+
+void zarzadzanie_pokojem()
+{
+
+}
+void zarezerwuj_pokoj()
+{
+
 }
 void menu_user()
 {
 	for (;;)
 	{
+		system("cls");
 		int wybor;
+		cout << "** Menu **"<<endl;
 		cout << "(1) Zarezerwuj pokoj" << endl;
-		cout << "(2) Zarzadzanie wynajetym pokojem" << endl;
+		cout << "(2) Zarezerwowane pokoje" << endl;
 		cout << "(3) Wyjdz" << endl;
 
 		cin >> wybor;
@@ -148,59 +160,59 @@ void menu_user()
 		}
 	}
 }
-void zarezerwuj_pokoj()
-{
 
-}
-void zarzadzanie_pokojem()
-{
 
-}
 
 void menu() {
-	int wybor;
-	cout << "Witaj w menu!" << endl;
-	cout << "Co chcesz zrobic?" << endl;
-	cout << "(1) Zaloguj sie" << endl;
-	cout << "(2) Zarejestruj sie" << endl;
-	cout << "(3) Wyjdz" << endl;
-
-	cin >> wybor;
-	cin.clear();
-	cin.ignore();
-	system("cls"); //czyszczenie ekranu
-
-	switch (wybor)
+	for (;;)
 	{
-	case 1:
-	{
-		bool stan = 0;
-		while (stan == 0) {
-			system("cls");
-			stan = logowanie();
+		int wybor;
+		cout << "Witaj w menu!" << endl;
+		cout << "Co chcesz zrobic?" << endl;
+		cout << "(1) Zaloguj sie" << endl;
+		cout << "(2) Zarejestruj sie" << endl;
+		cout << "(3) Wyjdz" << endl;
+
+		cin >> wybor;
+		cin.clear();
+		cin.ignore();
+		system("cls"); //czyszczenie ekranu
+
+		switch (wybor)
+		{
+		case 1:
+		{
+			bool stan = 0;
+			while (stan == 0) {
+				system("cls");
+				stan = logowanie();
+			}
+			menu_user();
+			break;
 		}
-		break;
-	}
-	case 2:
-	{
-		rejestracja();
-		break;
-	}
-	case 3:
-	{
+		case 2:
+		{
+			rejestracja();
+			
+			
+			break;
+		}
+		case 3:
+		{
 
-		break;
-	}
-	default:
-	{
-		break;
-	}
+			break;
+		}
+		default:
+		{
+			break;
+		}
+		}
 	}
 }
 
 int main()
 {
-
+	
 	menu();
 
 	//rejestracja();
