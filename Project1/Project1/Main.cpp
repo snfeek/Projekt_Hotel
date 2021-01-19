@@ -25,7 +25,7 @@ zamowienie posilku/sprzataczki
 
 int main()
 {
-	user 
+	user;
 	fstream plik;
 	plik.open("uzytkownicy.txt", std::ios::in | std::ios::out);
 	if (plik.good() == true)
