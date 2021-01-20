@@ -2,7 +2,9 @@
 #include <string>
 #include <fstream>
 #include "Header.h"
+#include "Main.h"
 using namespace std;
+
 
 
 
@@ -140,12 +142,12 @@ void menu_user()
 		{
 		case 1:
 		{
-			//zarezerwuj_pokoj();
+			zarezerwuj_pokoj();
 			break;
 		}
 		case 2:
 		{
-			//zarzadzanie_pokojem();
+			zarzadzanie_pokojem();
 			break;
 		}
 		case 3:
@@ -214,9 +216,11 @@ int main()
 {
 	
 	menu();
-
+	User u1;
+	Pokoj g1;
 	//rejestracja();
-
+	g1.cena_za_noc = 400;
+	cout << g1.cena_za_noc << endl;
 	system("pause");
 	return 0;
 }

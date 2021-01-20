@@ -127,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h" />
+    <ClInclude Include="Main.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Text.txt" />

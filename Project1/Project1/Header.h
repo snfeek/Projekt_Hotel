@@ -35,6 +35,9 @@ public:
 	void rezerwowanie();
 	void rezerwacja();
 	void rachunek();
+public:
+
+	Pokoj() {}
 };
 class user {
 public:
