@@ -3,10 +3,7 @@
 #include <iostream>
 using namespace std;
 
-#pragma once
-#include <string>
-#include <iostream>
-using namespace std;
+
 
 class Hotel {
 public:
@@ -25,19 +22,21 @@ class Recepcja {
 
 class Pokoj {
 public:
-	const int numer_pokoju;
-	const int pietro;
-	int rodzaj_pokoj; //1-jednosobowy, 2-dwuuosobowy,4-czterosobowy
+	string rodzaj_lozek;
+	int numer_pokoju;
+	int pietro;
+	int liczba_lozek;											
 	int cena_za_noc;
-	int dzien_konca_r, miesiac_konca_r, rok_konca_r, dzien_poczatku_r, miesiac_poczatku_r, rok_poczatku_r; // dzien konca n -dzien konca nowej rezerwacji itd
+	int dzien_konca_r =2, miesiac_konca_r=1, rok_konca_r=2021, dzien_poczatku_r=1, miesiac_poczatku_r=1, rok_poczatku_r=2021; // dzien konca n -dzien konca nowej rezerwacji itd
 	int dzien_konca_n, miesiac_konca_n, rok_konca_n, dzien_poczatku_n, miesiac_poczatku_n, rok_poczatku_n; // dzien poczatku r - dzien poczatku starej rezerwacji
 	bool czy_zarezerowany = false;
 	void rezerwowanie();
 	void rezerwacja();
 	void rachunek();
+	void pokaz_dane();
 public:
 
-	Pokoj() {}
+	//Pokoj() {}
 };
 class user {
 public:
@@ -50,6 +49,12 @@ public:
 	void logowanie();
 };
 
+void Pokoj::pokaz_dane()
+{
+	cout << "numer pokoju: " << numer_pokoju << ", pietro: " << pietro << ", liczba lozek: " << liczba_lozek <<", rodzaj lozek: "<< rodzaj_lozek << ", cena za noc: " << cena_za_noc << endl;
+	cout << "Data rezerwacji: " << dzien_poczatku_r << "." << miesiac_poczatku_r << "." << rok_poczatku_r << " - " << dzien_konca_r << "." << miesiac_konca_r << "." << rok_konca_r << endl;
+}
+
 void Pokoj::rezerwacja()
 {
 
@@ -60,10 +65,127 @@ void Pokoj::rezerwacja()
 	miesiac_konca_r = miesiac_konca_n;
 	miesiac_poczatku_r = miesiac_poczatku_n;
 	czy_zarezerowany = true; //tudaj daje true bo to czy_zarezerwowany to w kontekscie tego czy TERAZ zarezerwowany, myœlê ¿e tak jest ok
+	cout << "Udalo sie zarezerwowac pokoj!" << endl;
 }
 
 void Pokoj::rezerwowanie() // tutaj przed wywolaniem tej funkcji dobrze by bylo napisac cos w stlu ,,rezzerwacja pokoju, blablabla, wpisz datê pocz¹tku i koñca twojej rezerwacji
 { // bo nie chce tutaj dawac tych zmiennych bo to w mainie sie wszystko napisze i te ciny do tych zmiennych itd itp
+
+	cout << "Podaj dzien, miesiac, rok twojego planowanego zameldowania." << endl << endl;
+	cout << "Dzien: ";
+	cin >> dzien_poczatku_n;
+	if (dzien_poczatku_n > 31)
+	{
+		while (dzien_poczatku_n > 31)
+		{
+			cout << "zaden miesiac nie ma tyle dni! wpisz ponownie." << endl;
+			cout << "Dzien: ";
+			cin >> dzien_poczatku_n;
+			
+		}
+	}else
+	
+	
+	cout << ", Miesiac: ";
+	cin >> miesiac_poczatku_n;
+	if (miesiac_poczatku_n > 12)
+	{
+		while (miesiac_poczatku_n > 12)
+		{
+			cout << "Zaden rok nie ma tylu miesiecy! wpisz ponownie." << endl;
+			cin >> miesiac_poczatku_n;
+			
+
+		}
+	} 
+	
+	else if (dzien_poczatku_n > 29 && miesiac_poczatku_n == 2)
+	{
+		while (dzien_poczatku_n <= 29)
+		
+			{
+				cout << "luty nie ma az tyle dni, wpisz ponownie" << endl;
+				cout << "Dzien: ";
+				cin >> dzien_poczatku_n;
+				
+				cout << ", Miesi¹c: ";
+				cin >> miesiac_poczatku_n;
+				
+			}
+		
+	}else
+	
+
+
+	cout << ", Rok: ";
+	cin >> rok_poczatku_n;
+	if (rok_poczatku_n < 2021)
+	{
+		while (rok_poczatku_n < 2021)
+		{
+			cout << "Jezeli masz maszyne czasu to spoko, ale jak nie to wpisz prosze date przyszla :)" << endl;
+			cin >> rok_poczatku_n;
+			
+		}
+	}else
+	cout << endl << endl;
+	
+
+
+	cout << "Teraz podaj dzien, miesiac i rok twojego wymeldowania" << endl;
+	cin >> dzien_konca_n;
+	if (dzien_konca_n > 31)
+	{
+		while (dzien_konca_n> 31)
+		{
+			cout << "zaden miesiac nie ma tyle dni! wpisz ponownie." << endl;
+			cout << "Dzien: ";
+			cin >> dzien_konca_n;
+		}
+	}
+	else
+
+	cout << ", Miesi¹c: ";
+	cin >> miesiac_konca_n;
+	if (miesiac_konca_n > 12)
+	{
+		while (miesiac_konca_n > 12)
+		{
+			cout << "Zaden rok nie ma tylu miesiecy! wpisz ponownie." << endl;
+			cin >> miesiac_konca_n;
+
+		}
+	}
+	else
+	if (dzien_konca_n > 29 && miesiac_konca_n == 2)
+	{
+		while (dzien_konca_n <= 29)
+
+		{
+			cout << "luty nie ma az tyle dni, wpisz ponownie" << endl;
+			cout << "Dzien: ";
+			cin >> dzien_konca_n;
+			cout << ", Miesi¹c: ";
+			cin >> miesiac_konca_n;
+		}
+
+	}
+	else
+
+
+		cout << ", Rok: ";
+	cin >> rok_konca_n;
+	if (rok_konca_n < 2021)
+	{
+		while (rok_konca_n < 2021)
+		{
+			cout << "Jezeli masz maszyne czasu to spoko, ale jak nie to wpisz prosze date przyszla :)" << endl;
+			cin >> rok_konca_n;
+		}
+	}
+	else
+		cout << endl << endl;
+
 
 	if (rok_poczatku_n == rok_konca_n == rok_konca_r == rok_poczatku_r) //zapierdole siê kurwa xD patrz ile tych ifów jest
 	{
@@ -168,7 +290,7 @@ void Pokoj::rezerwowanie() // tutaj przed wywolaniem tej funkcji dobrze by bylo 
 void Pokoj::rachunek()
 {
 	int rachunek_do_zaplacenia;
-	int ilosc_dni;
+	int ilosc_dni = 0;
 
 
 

@@ -220,10 +220,18 @@ void menu() {
 
 int main()
 {
-	
-	menu();
+	Pokoj p1;
+	p1.numer_pokoju = 2;
+	p1.cena_za_noc = 250;
+	p1.pietro = 1;
+	p1.czy_zarezerowany = false;
+	p1.liczba_lozek = 4;
+	p1.rodzaj_lozek = "pojedyncze";
+	p1.pokaz_dane();
+	p1.rezerwowanie();
+	p1.pokaz_dane();
+	//menu();
 
-	
 
 	system("pause");
 	return 0;
