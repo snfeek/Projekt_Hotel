@@ -68,6 +68,8 @@ void menu_admin()				//po zalogowaniu
 
 }
 
+bool zalogowany = false;
+
 bool logowanie()
 {
 	string login, haslo;
@@ -94,12 +96,13 @@ bool logowanie()
 			if (login.compare(tempLogin) == 0 && haslo.compare(tempHaslo) == 0) {			//porownanie loginu i hasla uzytkownika z tymi z pliku
 				//cout << "Jestes zalogowany" << endl;
 				zalogowano = true;
+				zalogowany = true;
 			}
 			//cout << tempLogin << " " << tempHaslo << " " << tempHaslo.size() <<  endl;
 		}
 
 		if (zalogowano == true) {
-
+			zalogowany = true;
 		}
 		else {
 			cout << "nie  zalogowany" << endl;
@@ -117,6 +120,11 @@ void zarzadzanie_pokojem()
 
 }
 
+void zarezerwuj_pokoj()
+{
+	
+}
+
 void menu_user()
 {
 	for (;;)
@@ -126,7 +134,7 @@ void menu_user()
 		cout << "** Menu **"<<endl;
 		cout << "(1) Zarezerwuj pokoj" << endl;
 		cout << "(2) Zarezerwowane pokoje" << endl;
-		cout << "(3) Wyjdz" << endl;
+		
 
 		cin >> wybor;
 		cin.clear();
@@ -155,7 +163,8 @@ void menu_user()
 			break;
 		}
 		}
-		if (wybor == 3)
+	
+		if (wybor == 1)
 		{
 			break;
 		}
@@ -209,7 +218,10 @@ void menu() {
 		}
 		if (wybor == 3)
 		{
-			break;
+			if (zalogowany)
+				break;
+			else
+				cout << "Musisz sie zalogowac" << endl;
 		}
 	}
 }
@@ -217,16 +229,16 @@ void menu() {
 int main()
 {
 	
-	Pokoj p[10];
+	Pokoj p[10];  //tworzenie obiektów pokoi 
 	for (int i = 0; i < 10; i++)
 	{
-		p[i].numer_pokoju = i + 1;
+		p[i].numer_pokoju = i + 1; //nadawanie pokojom numerów
 	}
 	for (int i = 0; i < 3; i++)
 	{
-		p[i].standard = 1;
-		p[i].pietro = 0;
-		p[i].liczba_lozek = 2;
+		p[i].standard = 1;			//standard
+		p[i].pietro = 0;			//3 pierwsze pokoje na parterze
+		p[i].liczba_lozek = 2;		// 1 standard pokoju ma po dwa ³ó¿ka i oba pojedynce
 		p[i].rodzaj_lozek = "Pojedyncze";
 		p[i].cena_za_noc = 150;
 
