@@ -23,10 +23,11 @@ class Recepcja {
 class Pokoj {
 public:
 	string rodzaj_lozek;
-	int numer_pokoju;
-	int pietro;
-	int liczba_lozek;											
-	int cena_za_noc;
+	int numer_pokoju=1;
+	int pietro=1;
+	int liczba_lozek =1;	
+	int standard = 0;
+	int cena_za_noc=200;
 	int dzien_konca_r =2, miesiac_konca_r=1, rok_konca_r=2021, dzien_poczatku_r=1, miesiac_poczatku_r=1, rok_poczatku_r=2021; // dzien konca n -dzien konca nowej rezerwacji itd
 	int dzien_konca_n, miesiac_konca_n, rok_konca_n, dzien_poczatku_n, miesiac_poczatku_n, rok_poczatku_n; // dzien poczatku r - dzien poczatku starej rezerwacji
 	bool czy_zarezerowany = false;
@@ -86,7 +87,7 @@ void Pokoj::rezerwowanie() // tutaj przed wywolaniem tej funkcji dobrze by bylo 
 	}else
 	
 	
-	cout << ", Miesiac: ";
+	cout << "Miesiac: ";
 	cin >> miesiac_poczatku_n;
 	if (miesiac_poczatku_n > 12)
 	{
@@ -108,7 +109,7 @@ void Pokoj::rezerwowanie() // tutaj przed wywolaniem tej funkcji dobrze by bylo 
 				cout << "Dzien: ";
 				cin >> dzien_poczatku_n;
 				
-				cout << ", Miesi¹c: ";
+				cout << "Miesiac: ";
 				cin >> miesiac_poczatku_n;
 				
 			}
@@ -117,7 +118,7 @@ void Pokoj::rezerwowanie() // tutaj przed wywolaniem tej funkcji dobrze by bylo 
 	
 
 
-	cout << ", Rok: ";
+	cout << "Rok: ";
 	cin >> rok_poczatku_n;
 	if (rok_poczatku_n < 2021)
 	{
@@ -145,7 +146,7 @@ void Pokoj::rezerwowanie() // tutaj przed wywolaniem tej funkcji dobrze by bylo 
 	}
 	else
 
-	cout << ", Miesi¹c: ";
+	cout << "Miesiac: ";
 	cin >> miesiac_konca_n;
 	if (miesiac_konca_n > 12)
 	{
@@ -165,7 +166,7 @@ void Pokoj::rezerwowanie() // tutaj przed wywolaniem tej funkcji dobrze by bylo 
 			cout << "luty nie ma az tyle dni, wpisz ponownie" << endl;
 			cout << "Dzien: ";
 			cin >> dzien_konca_n;
-			cout << ", Miesi¹c: ";
+			cout << "Miesiac: ";
 			cin >> miesiac_konca_n;
 		}
 
@@ -173,7 +174,7 @@ void Pokoj::rezerwowanie() // tutaj przed wywolaniem tej funkcji dobrze by bylo 
 	else
 
 
-		cout << ", Rok: ";
+		cout << "Rok: ";
 	cin >> rok_konca_n;
 	if (rok_konca_n < 2021)
 	{
@@ -201,7 +202,7 @@ void Pokoj::rezerwowanie() // tutaj przed wywolaniem tej funkcji dobrze by bylo 
 			}
 			else
 			{
-				cout << "Pokój jest wtedy zarezerwowany!" << endl;
+				cout << "Pokoj jest wtedy zarezerwowany!" << endl;
 			}
 		}
 		else if (miesiac_poczatku_n == miesiac_konca_r)
@@ -212,7 +213,7 @@ void Pokoj::rezerwowanie() // tutaj przed wywolaniem tej funkcji dobrze by bylo 
 			}
 			else
 			{
-				cout << "Pokój jest wtedy zarezerwowany!" << endl;
+				cout << "Pokoj jest wtedy zarezerwowany!" << endl;
 			}
 		}
 		else if (miesiac_konca_n == miesiac_poczatku_r)
@@ -223,7 +224,7 @@ void Pokoj::rezerwowanie() // tutaj przed wywolaniem tej funkcji dobrze by bylo 
 			}
 			else
 			{
-				cout << "Pokój jest wtedy zarezerwowany!" << endl;
+				cout << "Pokoj jest wtedy zarezerwowany!" << endl;
 			}
 		}
 		else if (miesiac_poczatku_n != miesiac_konca_r)
@@ -249,12 +250,12 @@ void Pokoj::rezerwowanie() // tutaj przed wywolaniem tej funkcji dobrze by bylo 
 			}
 			else
 			{
-				cout << "Pokój jest wtedy zarezerwowany!" << endl;
+				cout << "Pokoj jest wtedy zarezerwowany!" << endl;
 			}
 		}
 		else
 		{
-			cout << "Pokój jest wtedy zarezerwowany!" << endl;
+			cout << "Pokoj jest wtedy zarezerwowany!" << endl;
 		}
 	}
 	else if (rok_konca_n == rok_poczatku_r)
@@ -271,7 +272,7 @@ void Pokoj::rezerwowanie() // tutaj przed wywolaniem tej funkcji dobrze by bylo 
 			}
 			else
 			{
-				cout << "Pokój jest wtedy zarezerwowany!" << endl;
+				cout << "Pokoj jest wtedy zarezerwowany!" << endl;
 			}
 		}
 	}

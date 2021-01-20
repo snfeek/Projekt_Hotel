@@ -220,16 +220,39 @@ void menu() {
 
 int main()
 {
-	Pokoj p1;
-	p1.numer_pokoju = 2;
-	p1.cena_za_noc = 250;
-	p1.pietro = 1;
-	p1.czy_zarezerowany = false;
-	p1.liczba_lozek = 4;
-	p1.rodzaj_lozek = "pojedyncze";
-	p1.pokaz_dane();
-	p1.rezerwowanie();
-	p1.pokaz_dane();
+	Pokoj p[10];
+	for (int i = 0; i < 10; i++)
+	{
+		p[i].numer_pokoju = i + 1;
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		p[i].standard = 1;
+		p[i].pietro = 0;
+		p[i].liczba_lozek = 2;
+		p[i].rodzaj_lozek = "Pojedyncze";
+
+	}
+	for (int i = 3; i < 6; i++)
+	{
+		p[i].standard = 2;
+		p[i].pietro = 1;
+		p[i].liczba_lozek = 1;
+		p[i].rodzaj_lozek = "Podwojne";
+	}
+	for (int i = 6; i < 9; i++)
+	{
+		p[i].standard = 3;
+		p[i].pietro = 4;
+		p[i].liczba_lozek = 2;
+		p[i].rodzaj_lozek = "Podwojne";
+	}
+	p[9].standard = 4;
+	p[9].pietro = 5;
+	p[9].liczba_lozek = 3;
+	p[9].rodzaj_lozek = "Królewskie";
+
+	
 	//menu();
 
 
