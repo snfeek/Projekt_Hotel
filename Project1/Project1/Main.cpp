@@ -116,10 +116,7 @@ void zarzadzanie_pokojem()
 {
 
 }
-void zarezerwuj_pokoj()
-{
 
-}
 void menu_user()
 {
 	for (;;)
@@ -175,7 +172,7 @@ void menu() {
 		cout << "Co chcesz zrobic?" << endl;
 		cout << "(1) Zaloguj sie" << endl;
 		cout << "(2) Zarejestruj sie" << endl;
-		cout << "(3) Wyjdz" << endl;
+		cout << "(3) Zarezerwuj pokoj" << endl;
 
 		cin >> wybor;
 		cin.clear();
@@ -203,7 +200,6 @@ void menu() {
 		}
 		case 3:
 		{
-
 			break;
 		}
 		default:
@@ -220,6 +216,7 @@ void menu() {
 
 int main()
 {
+	
 	Pokoj p[10];
 	for (int i = 0; i < 10; i++)
 	{
@@ -231,6 +228,7 @@ int main()
 		p[i].pietro = 0;
 		p[i].liczba_lozek = 2;
 		p[i].rodzaj_lozek = "Pojedyncze";
+		p[i].cena_za_noc = 150;
 
 	}
 	for (int i = 3; i < 6; i++)
@@ -239,6 +237,7 @@ int main()
 		p[i].pietro = 1;
 		p[i].liczba_lozek = 1;
 		p[i].rodzaj_lozek = "Podwojne";
+		p[i].cena_za_noc = 250;
 	}
 	for (int i = 6; i < 9; i++)
 	{
@@ -246,16 +245,33 @@ int main()
 		p[i].pietro = 4;
 		p[i].liczba_lozek = 2;
 		p[i].rodzaj_lozek = "Podwojne";
+		p[i].cena_za_noc = 400;
 	}
 	p[9].standard = 4;
 	p[9].pietro = 5;
 	p[9].liczba_lozek = 3;
-	p[9].rodzaj_lozek = "Królewskie";
+	p[9].rodzaj_lozek = "Krolewskie";
+	p[9].cena_za_noc = 600;
+	
+
+
 
 	
-	//menu();
+	menu();
+
+
+	for (int i = 0; i < 10; i++)
+	{
+		p[i].pokaz_dane();
+	}
+	cout << endl << " Wybierz pokoj do zarezerwowania: ";
+	int choice;
+	cin >> choice;
+	p[choice-1].rezerwowanie();
+	p[choice-1].rachunek();
 
 
 	system("pause");
 	return 0;
 }
+
