@@ -55,7 +55,7 @@ bool rejestracja()
 		}
 
 		else
-			cout << "Jest juz taki ziomek! Login zajenty" << endl;
+			cout << "Jest juz taki uzytykownik! Login zajety" << endl;
 		return 0;
 	}
 
@@ -102,7 +102,7 @@ bool logowanie()
 
 		}
 		else {
-			cout << "Kurwa nie jestes zalogowany ziom " << endl;
+			cout << "nie  zalogowany" << endl;
 			return 0;
 		}
 
@@ -158,6 +158,10 @@ void menu_user()
 			break;
 		}
 		}
+		if (wybor == 3)
+		{
+			break;
+		}
 	}
 }
 
@@ -207,6 +211,10 @@ void menu() {
 			break;
 		}
 		}
+		if (wybor == 3)
+		{
+			break;
+		}
 	}
 }
 
@@ -215,7 +223,7 @@ int main()
 	
 	menu();
 
-	//rejestracja();
+	
 
 	system("pause");
 	return 0;

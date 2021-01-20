@@ -215,8 +215,8 @@ void Pokoj::rachunek()
 	rachunek_do_zaplacenia = ilosc_dni * cena_za_noc;
 	cout << "Rachunek wynosi: " << rachunek_do_zaplacenia << "zl. " << endl;
 }
-
-void Pokoj::rachunek()
+//DRUGI RACHUNEK NIE WIEM SKAD ON JEST WEZ OBCZAJ KTORY JEST WAZNY I Z KTOREGO KORZYSTASZ !#@!#!@#!@#!@#@!#@!#!@#@!#!@#!@#!@#!@#!@#@!#!@#!@#!@#@!#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@#!@
+/*void Pokoj::rachunek()
 {
 	int rachunek_do_zaplacenia;
 	int ilosc_dni;
@@ -268,7 +268,7 @@ void Pokoj::rachunek()
 	
 	rachunek_do_zaplacenia = ilosc_dni * cena_za_noc;
 	cout << "Rachunek wynosi: " << rachunek_do_zaplacenia << "zl. " << endl;
-}
+}*/
 
 void user::rejestracja()
 {
