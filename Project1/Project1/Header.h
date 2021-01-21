@@ -30,10 +30,13 @@ public:
 	int dzien_konca_r =2, miesiac_konca_r=1, rok_konca_r=2021, dzien_poczatku_r=1, miesiac_poczatku_r=1, rok_poczatku_r=2021; // dzien konca n -dzien konca nowej rezerwacji itd
 	int dzien_konca_n, miesiac_konca_n, rok_konca_n, dzien_poczatku_n, miesiac_poczatku_n, rok_poczatku_n; // dzien poczatku r - dzien poczatku starej rezerwacji
 	bool czy_zarezerowany = false;
+	int rachunek_do_zaplacenia=0;
 	void rezerwowanie();
 	void rezerwacja();
 	void rachunek();
 	void pokaz_dane();
+	void zamowienie_ekipy_sprzatajacej();
+	void zamowienie_jedzenia();
 public:
 
 	//Pokoj() {}
@@ -48,6 +51,21 @@ public:
 	void rejestracja();
 	void logowanie();
 };
+
+void Pokoj::zamowienie_ekipy_sprzatajacej()		//zamowienie ekipy sprzatajacej
+{
+	cout << "\n\t\t\t\tzamowiono ekipe sprzatajaca. ";
+	rachunek_do_zaplacenia += 40;
+	cout << "\n\t\t\t\tnowy bilans: " <<rachunek_do_zaplacenia << endl;
+}
+
+void Pokoj::zamowienie_jedzenia()				//zamowienie posilku
+{
+	cout << "\n\t\t\t\tzamowiono posi³ek. ";
+	rachunek_do_zaplacenia += 20;
+	cout << "\n\t\t\t\tnowy bilans: " << rachunek_do_zaplacenia << endl;
+}
+
 
 void Pokoj::pokaz_dane()
 {
@@ -288,7 +306,7 @@ void Pokoj::rezerwowanie() {
 
 void Pokoj::rachunek()
 {
-	int rachunek_do_zaplacenia;
+	
 	int ilosc_dni = 0;
 
 

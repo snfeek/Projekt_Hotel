@@ -273,7 +273,6 @@ int main()
 	
 	menu();
 
-
 	for (int i = 0; i < 10; i++)
 	{
 		p[i].pokaz_dane();   //wyswietlenie pokoi
@@ -291,7 +290,7 @@ int main()
 
 	system("cls");
 	cout << "\n\t\t\t\t(1) Informacje o rezerwacji" << endl;			//dalsze operacje na rezerwacji
-	cout << "\n\t\t\t\t(2) Edycja rezerwacji" << endl;
+	cout << "\n\t\t\t\t(2) Zarzadzanie rezerwacja " << endl;
 	int wybor2;
 	cin >> wybor2;
 	cin.clear();
@@ -313,9 +312,12 @@ int main()
 	}
 	case 2:
 	{
-		cout << "\n\t\t\t\t*************";					//gwiazdki maja charakter czysto wizualny
+		cout << "\n\t\t\t\t*************";	
+		cout << "\n\t\t\t\t* Zarzadzanie rezerwacja *";				//gwiazdki maja charakter czysto wizualny
 		cout << "\n\t\t\t\t(1) zmiana pokoju" ;
 		cout << "\n\t\t\t\t(2) zmiana terminu rezerwacji";
+		cout << "\n\t\t\t\t(3) zamowienie ekipy sprzatajacej";
+		cout << "\n\t\t\t\t(4) zamowienie jedzenia do pokoju";
 		cout << "\n\t\t\t\t*************";
 		int wybor3;
 		cin >> wybor3;
@@ -359,6 +361,20 @@ int main()
 			system("cls");
 			break;
 			}
+		case 3:
+		{
+			p[choice - 1].zamowienie_ekipy_sprzatajacej();			//wywolanie funkcji sprzatania
+			Sleep(10000);
+			system("cls");
+			break;
+		}
+		case 4:
+		{
+			p[choice - 1].zamowienie_jedzenia();					//wywolanie funkcji zamawiania posilku
+			Sleep(10000);
+			system("cls");
+			break;
+		}
 		}
 		Sleep(10000);
 		system("cls");
